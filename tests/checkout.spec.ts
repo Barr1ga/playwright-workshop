@@ -23,6 +23,11 @@ test.describe('Test Case 3: Checkout Page', () => {
         await loginPage.login();
     });
 
+    test.afterEach(async ({loginPage, page}) => {
+        await loginPage.logout();
+        await expect(page).toHaveURL('https://www.saucedemo.com/');
+      });
+
     test('should checkout with correct number of inventory items and shipping information', async ({productsPage, page}) => {
         // Add one specific product (Sauce Labs Fleece Jacket) to the shopping cart.
         // Assuming we only know the name else locator('[data-test="add-to-cart-sauce-labs-fleece-jacket"]')

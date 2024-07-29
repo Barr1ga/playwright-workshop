@@ -24,4 +24,9 @@ export class LoginPage {
         await this.fillCredentials(data);
         await this.submitCredentials();
     }
+
+    async logout() {
+        await this.page.getByRole('button', { name: 'Open Menu' }).click();
+        await this.page.locator('[data-test="logout-sidebar-link"]').click();
+    }
 }

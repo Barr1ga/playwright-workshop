@@ -23,6 +23,11 @@ test.describe('Test Case 2: Adding Products', () => {
         await loginPage.login();
     });
 
+    test.afterEach(async ({loginPage, page}) => {
+        await loginPage.logout();
+        await expect(page).toHaveURL('https://www.saucedemo.com/');
+      });
+
     test('should add a specific product to the cart', async ({productsPage, page}) => {
         // Add one specific product (Sauce Labs Fleece Jacket) to the shopping cart.
         // Assuming we only know the name else locator('[data-test="add-to-cart-sauce-labs-fleece-jacket"]')
